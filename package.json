@@ -1,0 +1,23 @@
+{
+  "name": "movie-db",
+  "version": "1.0.0",
+  "description": "build the codi movie database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JadRifai19/Movie-DB.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JadRifai19/Movie-DB/issues"
+  },
+  "homepage": "https://github.com/JadRifai19/Movie-DB#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
