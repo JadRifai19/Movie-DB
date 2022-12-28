@@ -10,13 +10,3 @@ app.listen(port, () => {
     console.log(`listening on port of ${port}`)
   })
 
-app.get ('/test', (req, res) => {
-    res.json({status:200, message:"ok"})
-})
-
-app.get('/time', (rep, res) => {
-    const currentTime = new Date();
-    const hours = currentTime.getHours();
-    const seconds = currentTime.getSeconds();
-    res.json({status:200 , message:'${hours}:${seconds}'})
-})
