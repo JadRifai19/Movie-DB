@@ -49,3 +49,16 @@ app.get('movies/read' , (req, res) => {
 app.get('movies/edit' , (req, res) => {})
 
 app.get('movies/delete' , (req, res) => {})
+
+app.get('/movies/read/by-date', (rep, res) => {
+    res.json({status:200, data:movies})
+})
+
+app.get('/movies/read/by-rating', (rep, res) => {
+    res.json({status:200, data:movies})
+})
+
+app.get('/movies/read/by-title', (rep, res) => {
+    res.json({status:200, data:movies})
+}) 
+
