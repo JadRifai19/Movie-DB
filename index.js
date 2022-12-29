@@ -40,9 +40,9 @@ app.get('/search?s=SEARCH' , (rep, res) => {
     }    
 })
 
-app.get('/movies/create' , (req, res) => {})
+app.get('/movies/add' , (req, res) => {})
 
-app.get('movies/read' , (req, res) => {
+app.get('movies/get' , (req, res) => {
     res.json({status:200, data:movies})
 })
 
@@ -73,3 +73,16 @@ app.get('/movies/read/id/:id' , (req, res) =>{
     }
 })
 
+app.get('movie/add?title=<TITLE>&year=<YEAR>&rating=<RATING>' , (req, res) => {
+    const title = req.query.title
+    const year = req.query.year
+    const rating = req.query.rating 
+    if (!title || !year || year.length !==4 || isNaN(year)) {
+    res.json({status:403, error:true, message:'you cannot create a movie without providing a title and a year'}) 
+}
+    else {
+        const newmovie = {title, year,rating: rating || 4}
+        movies.push(newmovie)
+        res.json({status:200, data: movies})
+    }
+})
