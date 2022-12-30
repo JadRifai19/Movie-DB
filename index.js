@@ -10,26 +10,26 @@ const movies = [
 
 app.get('/' ,(req, res) => {
     res.send('ok')
-})
+});
 
 app.listen(port, () => {
     console.log(`listening on port of ${port}`)
-  })
+});
 
 app.get ('/test', (req, res) => {
     res.json({status:200, message:"ok"})
-})
+});
 
 app.get('/time', (rep, res) => {
     const currentTime = new Date();
     const hours = currentTime.getHours();
     const seconds = currentTime.getSeconds();
     res.json({status:200 , message:'${hours}:${seconds}'})
-})
+});
 
 app.get('/hello/id', (rep,res) =>{
     res.json({ status:200, message:`Hello, ${id}`})
-})
+});
 
 app.get('/search?s=SEARCH' , (rep, res) => {
     const search = req.query.search    
@@ -38,29 +38,29 @@ app.get('/search?s=SEARCH' , (rep, res) => {
     else {
         res.status(500).json({status: 500, error:true, message:"you have to provide a search"})
     }    
-})
+});
 
-app.get('/movies/add' , (req, res) => {})
+app.get('/movies/add' , (req, res) => {});
 
 app.get('movies/get' , (req, res) => {
     res.json({status:200, data:movies})
-})
+});
 
-app.get('movies/edit' , (req, res) => {})
+app.get('movies/edit' , (req, res) => {});
 
-app.get('movies/delete' , (req, res) => {})
+app.get('movies/delete' , (req, res) => {});
 
 app.get('/movies/read/by-date', (rep, res) => {
     res.json({status:200, data:movies})
-})
+});
 
 app.get('/movies/read/by-rating', (rep, res) => {
     res.json({status:200, data:movies})
-})
+});
 
 app.get('/movies/read/by-title', (rep, res) => {
     res.json({status:200, data:movies})
-}) 
+});
 
 app.get('/movies/read/id/:id' , (req, res) =>{
     const id = parseInt(req.params.id);
@@ -71,7 +71,7 @@ app.get('/movies/read/id/:id' , (req, res) =>{
     else {
         res.status(404).json({status:404, error:true, message:'the movie ${ID} does not exist'})
     }
-})
+});
 
 app.get('movie/add?title=<TITLE>&year=<YEAR>&rating=<RATING>' , (req, res) => {
     const title = req.query.title
@@ -85,4 +85,16 @@ app.get('movie/add?title=<TITLE>&year=<YEAR>&rating=<RATING>' , (req, res) => {
         movies.push(newmovie)
         res.json({status:200, data: movies})
     }
-})
+});
+
+app.get('movies/delete/:id', (req, res) => {
+    const id= req.params.id;
+    if (id> movies.length) {
+        res.json({status:404, error:true, message:'the movie <ID> does not exist'})
+    }
+    else {
+        movies.splice(id-1, 1);
+        res.json({ status: 200, data: movies });
+      }
+});
+
