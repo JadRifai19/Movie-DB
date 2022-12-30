@@ -90,11 +90,24 @@ app.get('movie/add?title=<TITLE>&year=<YEAR>&rating=<RATING>' , (req, res) => {
 app.get('movies/delete/:id', (req, res) => {
     const id= req.params.id;
     if (id> movies.length) {
-        res.json({status:404, error:true, message:'the movie <ID> does not exist'})
+        res.json({status:404, error:true, message:'the movie ${id} does not exist'})
     }
     else {
         movies.splice(id-1, 1);
-        res.json({ status: 200, data: movies });
+        res.json({status: 200, data: movies });
       }
 });
 
+app.get("/movies/update/<ID>?title=<NEW_TITLE>", (req, res) =>{
+    const id = parseInt(req.params.id)
+    if (id>movies.length) {
+        res.json({status: 404, error: true, message: `the movie ${id} does not exist`})
+    }
+    else {
+        const movie = movies[id - 1]
+        if (req.query.title) movie.title = req.query.title
+        if (req.query.rating) movie.rating = req.query.rating
+        if (req.query.year) movie.year = req.query.year
+        res.json({status:200, data: movies}) 
+    }
+});
