@@ -119,7 +119,8 @@ However, and this is important to understand, we will *not* create a front end i
 
 ## Step 11 - Use HTTP Verbs
 
-- change the urls to use `HTTP VERBS` (look it up. Google "rest APIs", and see "how to build REST APIs with Express")
+- change the urls to use `HTTP VERBS` 
+- (look it up. Google "rest APIs", and see "how to build REST APIs with Express")
 - commit ("step 11") 
 
 ## Step 12: Data Persistence
