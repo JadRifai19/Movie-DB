@@ -73,7 +73,7 @@ app.get('/movies/read/id/:id' , (req, res) =>{
     }
 });
 
-app.get('movie/add?title=<TITLE>&year=<YEAR>&rating=<RATING>' , (req, res) => {
+app.post('movie/add?title=<TITLE>&year=<YEAR>&rating=<RATING>' , (req, res) => {
     const title = req.query.title
     const year = req.query.year
     const rating = req.query.rating 
@@ -87,7 +87,7 @@ app.get('movie/add?title=<TITLE>&year=<YEAR>&rating=<RATING>' , (req, res) => {
     }
 });
 
-app.get('movies/delete/:id', (req, res) => {
+app.delete('movies/delete/:id', (req, res) => {
     const id= req.params.id;
     if (id> movies.length) {
         res.json({status:404, error:true, message:'the movie ${id} does not exist'})
@@ -98,7 +98,7 @@ app.get('movies/delete/:id', (req, res) => {
       }
 });
 
-app.get("/movies/update/<ID>?title=<NEW_TITLE>", (req, res) =>{
+app.patch("/movies/update/<ID>?title=<NEW_TITLE>", (req, res) =>{
     const id = parseInt(req.params.id)
     if (id>movies.length) {
         res.json({status: 404, error: true, message: `the movie ${id} does not exist`})
